@@ -1,0 +1,7 @@
+﻿services:
+  fightcore.feedbackhub:
+    image: fightcore.feedbackhub
+    build:
+      context: .
+      dockerfile: Fightcore.FeedbackHub/Dockerfile
+

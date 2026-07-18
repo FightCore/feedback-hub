@@ -1,0 +1,6 @@
+@Fightcore.FeedbackHub_HostAddress = http://localhost:5272
+
+GET {{Fightcore.FeedbackHub_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
