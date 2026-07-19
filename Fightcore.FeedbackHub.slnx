@@ -1,0 +1,6 @@
+<Solution>
+  <Folder Name="/Solution Items/">
+    <File Path="compose.yaml" />
+  </Folder>
+  <Project Path="Fightcore.FeedbackHub/Fightcore.FeedbackHub.csproj" />
+</Solution>
