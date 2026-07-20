@@ -1,10 +1,20 @@
+using Fightcore.FeedbackHub.Notifications;
+using Fightcore.FeedbackHub.Repositories;
+using Fightcore.FeedbackHub.Services;
+
 var builder = WebApplication.CreateBuilder(args);
+builder.Configuration.AddUserSecrets<Program>()
+    .AddEnvironmentVariables();
 
 // Add services to the container.
 
 builder.Services.AddControllers();
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();
+
+builder.Services.AddScoped<FeedbackRepository>();
+builder.Services.AddScoped<NotificationService>();
+builder.Services.AddScoped<FeedbackService>();
 
 var app = builder.Build();
 

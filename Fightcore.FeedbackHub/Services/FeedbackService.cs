@@ -15,6 +15,7 @@ public class FeedbackService
     
     public FeedbackService(FeedbackRepository feedbackRepository, NotificationService notificationService, ILogger<FeedbackService> logger)
     {
+        _feedbackRepository = feedbackRepository;
         _notificationService = notificationService;
         _logger = logger;
     }
