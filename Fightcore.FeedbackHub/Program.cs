@@ -16,15 +16,30 @@ builder.Services.AddScoped<FeedbackRepository>();
 builder.Services.AddScoped<NotificationService>();
 builder.Services.AddScoped<FeedbackService>();
 
+
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowAll", policy => policy.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
+    options.AddPolicy("AllowFightcore",
+        policy => policy
+            .WithOrigins(["https://www.fightcore.gg", "https://beta.fightcore.gg"])
+            .AllowAnyMethod()
+            .AllowAnyHeader());
+});
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
     app.MapOpenApi();
+    app.UseCors("AllowAll");
 }
-
-app.UseHttpsRedirection();
+else
+{
+    app.UseCors("AllowFightcore");
+    app.UseHttpsRedirection();
+}
 
 app.UseAuthorization();
 
